@@ -8,6 +8,7 @@ services:
 
 install:
   - docker --version
+  - chmod 755 ./build-lambda-package.sh 
   - ./build-lambda-package.sh
 
 script:
