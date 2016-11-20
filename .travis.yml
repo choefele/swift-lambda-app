@@ -6,6 +6,7 @@ node_js:
 services:
   - docker
 
+# mkdir required here to avoid permission problem in script
 install:
   - mkdir -p .build/lambda/libraries 
   - ./build-lambda-package.sh
