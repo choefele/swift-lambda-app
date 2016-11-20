@@ -19,7 +19,7 @@ exports.handler = (event, context, callback) => {
             var response = JSON.parse(stdout);
             callback(null, response);
         } catch(e) {
-            e.message += ": \"" + stdout + "\""
+            e.message += ": " + stderr
             callback(e, null);
         }
     }
