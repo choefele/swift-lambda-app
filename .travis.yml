@@ -1,0 +1,14 @@
+sudo: required
+language: node_js
+node_js:
+  - "4"
+
+services:
+  - docker
+
+install:
+  - docker --version
+  - ./build-lambda-package.sh
+
+script:
+  - ./run-integration-tests.sh
