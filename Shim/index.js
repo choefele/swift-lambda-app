@@ -10,7 +10,7 @@ exports.handler = (event, context, callback) => {
     const childObject = spawnSync(command, ["--library-path", "libraries", "./Lambda"], options)
 
     if (childObject.error) {
-        callback(error, null);
+        callback(childObject.error, null);
     } else {
         try {
             // The executable's raw stdout is the Lambda output
