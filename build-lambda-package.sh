@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 SWIFT_VERSION=$(<.swift-version)
 
 # Build Swift executable
