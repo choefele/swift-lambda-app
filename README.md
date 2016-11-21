@@ -37,3 +37,24 @@ Before uploading to Lambda, it's worthwhile to build for the target OS and run t
 `build-lambda-package.sh` builds and tests the Lambda target inside a Swift Docker container based on Ubuntu because there's currently no Swift compiler for Amazon Linux (based on RHEL). Executables built on different Linux distributions are compatible with each other if you provide all dependencies necessary to run the program. For this reason, the script captures all shared libraries required to run the executable using `ldd`.
 
 To prove that the resulting package works, `run-integration-tests.sh` runs the resulting Swift code inside a Docker container that comes close to Lambda’s execution environment (unfortunately, [Amazon only provides Docker images](https://hub.docker.com/_/amazonlinux/) for version 2016.09 of Amazon Linux whereas [Lambda uses 2015.09](http://docs.aws.amazon.com/lambda/latest/dg/current-supported-versions.html)). The integration with Lambda is done via a small [Node.js script](https://github.com/choefele/swift-lambda-app/blob/master/Shim/index.js) that uses the `child_process` module to run the Swift executable. The script follows Amazon's recommendations to [run arbitrary executables in AWS Lambda](https://aws.amazon.com/blogs/compute/running-executables-in-aws-lambda/).
+
+## Deployment
+
+To deploy your code to Lambda:
+
+- Run `build-lambda-package.sh` to produce a zip at .build/lambda/lambda.zip file with all required files to upload to Lambda
+- Create a new Lambda function in the [AWS Console](https://console.aws.amazon.com/lambda/home) in the US East (N. Virginia) region
+ - Use an Alexa Skills Kit trigger
+ - Runtime: NodeJS 4.3
+ - Code entry type: ZIP file (upload the lambda.zip file from the previous step)
+ - Handler: index.handler
+ - Role: Create from template or use existing role
+
+After creating the Lambda function, you can now create an Alexa skill:
+- Go to the [Alexa console](https://developer.amazon.com/edw/home.html#/skills/list) and create a new skill
+- Skill type: Custom Interaction Model
+- Intent: `{ "intents": [{"intent": "TestIntent"}]}`
+- Sample utterances: "TestIntent test swift"
+- Service endpoint type: AWS Lambda ARN (use the ARN from the AWS Console)
+ 
+Now you can test the skill in the Alexa Console using the utterance "test swift". More details on configuring Alexa skills can be found on [Amazon's developer portal](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/overviews/steps-to-build-a-custom-skill).
