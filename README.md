@@ -53,11 +53,13 @@ Before uploading to Lambda, it's worthwhile to build for the target OS and run t
 
 To prove that the resulting package works, `run-integration-tests.sh` runs the resulting Swift code inside a Docker container that comes close to Lambda’s execution environment (unfortunately, [Amazon only provides Docker images](https://hub.docker.com/_/amazonlinux/) for version 2016.09 of Amazon Linux whereas [Lambda uses 2015.09](http://docs.aws.amazon.com/lambda/latest/dg/current-supported-versions.html)). The integration with Lambda is done via a small [Node.js script](https://github.com/choefele/swift-lambda-app/blob/master/Shim/index.js) that uses the `child_process` module to run the Swift executable. The script follows Amazon's recommendations to [run arbitrary executables in AWS Lambda](https://aws.amazon.com/blogs/compute/running-executables-in-aws-lambda/).
 
+After [configuring Travis](https://github.com/choefele/swift-lambda-app/blob/master/.travis.yml), you can run the same integration scripts also for every commit.
+
 ## Deployment
 
 To deploy your code to Lambda:
 
-- Run `build-lambda-package.sh` to produce a zip at .build/lambda/lambda.zip file with all required files to upload to Lambda
+- Run `build-lambda-package.sh` to produce a zip file at .build/lambda/lambda.zip with all required files to upload to Lambda
 - Create a new Lambda function in the [AWS Console](https://console.aws.amazon.com/lambda/home) in the US East (N. Virginia) region
  - Use an Alexa Skills Kit trigger
  - Runtime: NodeJS 4.3
