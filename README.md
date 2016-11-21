@@ -16,3 +16,11 @@ This repo contains code and scripts to quicky get you started with writing Swift
 - Instructions on deploying the app to Lambda
 
 swift-lamda-app has been inspired by [SwiftOnLambda](https://github.com/algal/SwiftOnLambda), which provided the initial working code to execute Swift programs on Lambda.
+
+## Development
+The sample app in this repo uses a standard Swift Package Manager directory layout and [package file](https://github.com/choefele/swift-lambda-app/blob/master/Package.swift) thus `swift build`, `swift test` and `swift package generate-xcodeproj` work as expected. Check out the [SPM's documentation](https://github.com/apple/swift-package-manager/blob/master/Documentation/Usage.md) for more info.
+
+There are three targets:
+- AlexaSkill: this is library with the code that implements the custom Alexa skill. It's a separate library so it can be used by the other two targets. Also, libraries have `ENABLE_TESTABILITY` enabled by default which allows you to use `@testable import` in your unit tests.
+- Lambda: The command line executable for deployment to Lambda. This program uses `stdin` and `stdout` for processing data.
+- Server (macOS only): To simplify implementing a custom Alexa Skill, the Server target provides an HTTP interface to the AlexaSkill library. This HTTP server can be exposed publicly via [ngrok](https://ngrok.com) and configured in the Alexa console, which enables you to develop and debug an Alexa skill with code running on your development server.
