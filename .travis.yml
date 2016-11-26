@@ -3,10 +3,10 @@ sudo: required
 services:
   - docker
 
+# mkdir required here to avoid permission problem in script
 install:
+  - mkdir -p .build/lambda/libraries 
   - ./run-unit-tests.sh
 
-# mkdir required here to avoid permission problem in script
 script:
-  - mkdir -p .build/lambda/libraries 
   - ./run-integration-tests.sh
