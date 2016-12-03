@@ -20,7 +20,7 @@ swift-lamda-app has been inspired by [SwiftOnLambda](https://github.com/algal/Sw
 ## Development
 Tools: [Xcode](https://developer.apple.com/download/), [ngrok](https://ngrok.com) (optional)
 
-The sample app in this repo uses a standard Swift Package Manager directory layout and [package file](https://github.com/choefele/swift-lambda-app/blob/master/Package.swift) thus `swift build`, `swift test` and `swift package generate-xcodeproj` work as expected. Check out the [SPM's documentation](https://github.com/apple/swift-package-manager/blob/master/Documentation/Usage.md) for more info.
+The sample app in this repo uses a standard Swift Package Manager directory layout and [package file](https://github.com/choefele/swift-lambda-app/blob/master/Package.swift) thus `swift build`, `swift test` and `swift package generate-xcodeproj` work as expected. Check out the [SPM documentation](https://github.com/apple/swift-package-manager/blob/master/Documentation/Usage.md) for more info.
 
 There are three targets:
 - **AlexaSkill**: this is a library with the code that implements the custom Alexa skill. It's a separate library so it can be used by the other two targets. Also, libraries have `ENABLE_TESTABILITY` enabled by default which allows you to use `@testable import` in your unit tests.
