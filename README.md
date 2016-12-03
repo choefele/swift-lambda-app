@@ -63,7 +63,7 @@ After [configuring Travis](https://github.com/choefele/swift-lambda-app/blob/mas
 To deploy your code to Lambda:
 
 - Run `run-integration-tests.sh` to produce a zip file at .build/lambda/lambda.zip with all required files to upload to Lambda
-- Create a new Lambda function in the [AWS Console](https://console.aws.amazon.com/lambda/home) in the US East (N. Virginia) region
+- Create a new Lambda function in the [AWS Console](https://console.aws.amazon.com/lambda/home) in the US East/N. Virginia region (for Europe use EU/Ireland)
  - Use an Alexa Skills Kit trigger
  - Runtime: NodeJS 4.3
  - Code entry type: ZIP file (upload the lambda.zip file from the previous step)
