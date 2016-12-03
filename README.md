@@ -51,7 +51,7 @@ Before uploading to Lambda, it's worthwhile to run the unit tests in a Linux env
 
 `run-unit-tests.sh` builds and tests the Lambda target inside a Swift Docker container based on Ubuntu because there's currently no Swift compiler for Amazon Linux (based on RHEL). Executables built on different Linux distributions are compatible with each other if you provide all dependencies necessary to run the program. For this reason, the script captures all shared libraries required to run the executable using `ldd`.
 
-To prove that the resulting package works, `run-integration-tests.sh` runs a release build of the Swift code inside a Docker container that comes close to Lambda’s execution environment (unfortunately, [Amazon only provides a few Docker images](https://hub.docker.com/_/amazonlinux/) that don't necessarily matchwhat [Lambda is using](http://docs.aws.amazon.com/lambda/latest/dg/current-supported-versions.html)). 
+To prove that the resulting package works, `run-integration-tests.sh` runs a release build of the Swift code inside a Docker container that comes close to Lambda’s execution environment (unfortunately, [Amazon only provides a few Docker images](https://hub.docker.com/_/amazonlinux/) that don't necessarily match what [Lambda is using](http://docs.aws.amazon.com/lambda/latest/dg/current-supported-versions.html)). 
 
 The integration with Lambda is done via a small [Node.js script](https://github.com/choefele/swift-lambda-app/blob/master/Shim/index.js) that uses the `child_process` module to run the Swift executable. The script follows Amazon's recommendations to [run arbitrary executables in AWS Lambda](https://aws.amazon.com/blogs/compute/running-executables-in-aws-lambda/).
 
