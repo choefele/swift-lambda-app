@@ -27,7 +27,7 @@ There are three targets:
 - **Lambda**: The command line executable for deployment to Lambda. This program uses `stdin` and `stdout` for processing data.
 - **Server** (macOS only): To simplify implementing a custom Alexa Skill, the Server target provides an HTTP interface to the AlexaSkill library. This HTTP server can be exposed publicly via ngrok and configured in the Alexa console, which enables you to develop and debug an Alexa skill with code running on your development server. This target is macOS only because it wasn't possible to cleanly separate target dependencies and I didn't want to link libraries intended for server development to the Lambda executable used for deployment.
 
-For development, I recommend a [TDD](https://en.wikipedia.org/wiki/Test-driven_development) approach against the library target because this results in the quickest turnaround for code changes. Uploading to Lambda to quickly verify changes isn't really an option because of slow updating times. Exposing your functionality via HTTPS as described below, however, might enable you to test and debug your functionality in a slightly different way.
+For development, I recommend a [TDD](https://en.wikipedia.org/wiki/Test-driven_development) approach against the library target because this results in the quickest turnaround for code changes. Uploading to Lambda to quickly verify changes isn't really an option because of slow updating times. Exposing your functionality via HTTPS as described below, however, enables you to test and debug your functionality in a slightly different way.
 
 To run a local HTTPS server:
 - Make sure the sample builds by running `swift build`
