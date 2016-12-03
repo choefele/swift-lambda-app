@@ -40,6 +40,7 @@ To run a local HTTPS server:
  - Skill type: Custom Interaction Model
  - Intent: `{ "intents": [{"intent": "TestIntent"}]}`
  - Sample utterances: "TestIntent test swift"
+ - SSL Certificate: Select "My development endpoint is a sub-domain of a domain that has a wildcard certificate from a certificate authority"
  - Service endpoint type: _HTTPS (use the URL from ngrok)_
  
 Now you can test the skill in the Alexa Console using the utterance "test swift". This will call your local HTTP server allowing you to modify and debug your code with the Alexa service.
