@@ -15,7 +15,7 @@ This repo contains code and scripts to quickly get you started with writing Swif
 - Integration tests to proof you app is working before deploying to Lambda
 - Instructions on deploying the app to Lambda
 
-swift-lamda-app has been inspired by [SwiftOnLambda](https://github.com/algal/SwiftOnLambda), which provided the initial working code to execute Swift programs on Lambda.
+swift-lambda-app has been inspired by [SwiftOnLambda](https://github.com/algal/SwiftOnLambda), which provided the initial working code to execute Swift programs on Lambda.
 
 ## Development
 Tools: [Xcode](https://developer.apple.com/download/), [ngrok](https://ngrok.com) (optional)
