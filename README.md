@@ -17,6 +17,8 @@ This repo contains code and scripts to quickly get you started with writing Swif
 
 swift-lambda-app has been inspired by [SwiftOnLambda](https://github.com/algal/SwiftOnLambda), which provided the initial working code to execute Swift programs on Lambda.
 
+Also see the article [Serverless Swift](https://medium.com/@claushoefele/serverless-swift-2e8dce589b68#.97ijuj2x1) for a detailed introduction to running Swift on Lambda.
+
 ## Development
 Tools: [Xcode](https://developer.apple.com/download/), [ngrok](https://ngrok.com) (optional)
 
