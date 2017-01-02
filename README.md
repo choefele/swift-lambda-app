@@ -60,9 +60,20 @@ The integration with Lambda is done via a small [Node.js script](https://github.
 
 After [configuring Travis](https://github.com/choefele/swift-lambda-app/blob/master/.travis.yml), you can run the same integration script also for every commit.
 
-## Deployment
+## Deploying the Lambda Function
 
-To deploy your code to Lambda:
+### Deployment Using the Serverless Framework
+Tools: [Node.js](https://nodejs.org/), [Serverless](https://serverless.com)
+
+This project contains a `serverless.yml` configuration file for the [Serverless Framework](https://serverless.com), which automates uploading and configuring the Lambda function:
+
+- Make sure you have your [AWS credentials configured] for Serverless(https://serverless.com/framework/docs/providers/aws/guide/credentials/)
+- Run `run-integration-tests.sh` to produce a zip file at .build/lambda/lambda.zip with all required files to upload to Lambda
+- Run `sls deploy` to upload and configure the Lambda function
+sls invoke -f alexaSkill -p session_start.json
+
+### Manual Deployment
+To deploy your code to Lambda manually:
 
 - Run `run-integration-tests.sh` to produce a zip file at .build/lambda/lambda.zip with all required files to upload to Lambda
 - Create a new Lambda function in the [AWS Console](https://console.aws.amazon.com/lambda/home) in the US East/N. Virginia region (for Europe use EU/Ireland)
@@ -71,6 +82,8 @@ To deploy your code to Lambda:
  - Code entry type: ZIP file (upload the lambda.zip file from the previous step)
  - Handler: index.handler
  - Role: Create from template or use existing role
+
+## Creating an Alexa Skill
 
 After creating the Lambda function, you can now create an Alexa skill:
 - Go to the [Alexa console](https://developer.amazon.com/edw/home.html#/skills/list) and create a new skill
