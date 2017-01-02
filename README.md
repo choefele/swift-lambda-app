@@ -13,11 +13,16 @@ This repo contains code and scripts to quickly get you started with writing Swif
 - A setup to develop and test the app in your development environment
 - Scripts to build the app for the Lambda target environment
 - Integration tests to proof you app is working before deploying to Lambda
-- Instructions on deploying the app to Lambda
+- Instructions on deploying the app to Lambda (either manually or using Serverless)
 
 swift-lambda-app has been inspired by [SwiftOnLambda](https://github.com/algal/SwiftOnLambda), which provided the initial working code to execute Swift programs on Lambda.
 
 Also see the article [Serverless Swift](https://medium.com/@claushoefele/serverless-swift-2e8dce589b68#.97ijuj2x1) for a detailed introduction to running Swift on Lambda.
+
+## Using this Repo as a Template
+Tools: [Serverless](https://serverless.com) (optional)
+
+Simply fork this repo to start developing your own Lambda function in Swift. Alternatively, you can use Serverless to make a copy of this repo for you by using `serverless install --url https://github.com/choefele/swift-lambda-app`
 
 ## Development
 Tools: [Xcode](https://developer.apple.com/download/), [ngrok](https://ngrok.com) (optional)
@@ -63,25 +68,28 @@ After [configuring Travis](https://github.com/choefele/swift-lambda-app/blob/mas
 ## Deploying the Lambda Function
 
 ### Deployment Using the Serverless Framework
-Tools: [Node.js](https://nodejs.org/), [Serverless](https://serverless.com)
+Tools: [Serverless](https://serverless.com)
 
 This project contains a `serverless.yml` configuration file for the [Serverless Framework](https://serverless.com), which automates uploading and configuring the Lambda function:
 
 - Make sure you have your [AWS credentials configured] for Serverless(https://serverless.com/framework/docs/providers/aws/guide/credentials/)
-- Run `run-integration-tests.sh` to produce a zip file at .build/lambda/lambda.zip with all required files to upload to Lambda
+- Run `run-integration-tests.sh` to produce a zip file at `.build/lambda/lambda.zip` with all required files to upload to Lambda
 - Run `sls deploy` to upload and configure the Lambda function
-sls invoke -f alexaSkill -p session_start.json
+
+To verify that the Lambda function works, run `sls invoke -f alexaSkill -p session_start.json`
 
 ### Manual Deployment
 To deploy your code to Lambda manually:
 
-- Run `run-integration-tests.sh` to produce a zip file at .build/lambda/lambda.zip with all required files to upload to Lambda
+- Run `run-integration-tests.sh` to produce a zip file at `.build/lambda/lambda.zip` with all required files to upload to Lambda
 - Create a new Lambda function in the [AWS Console](https://console.aws.amazon.com/lambda/home) in the US East/N. Virginia region (for Europe use EU/Ireland)
  - Use an Alexa Skills Kit trigger
  - Runtime: NodeJS 4.3
- - Code entry type: ZIP file (upload the lambda.zip file from the previous step)
+ - Code entry type: ZIP file (upload the `lambda.zip` file from the previous step)
  - Handler: index.handler
  - Role: Create from template or use existing role
+ 
+To verify that the Lambda function works, condigure a test event with the contents of `session_start.json` in the AWS console.
 
 ## Creating an Alexa Skill
 
