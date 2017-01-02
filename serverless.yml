@@ -1,0 +1,16 @@
+service: swift-lambda-app
+
+frameworkVersion: ">=1.4.0 <2.0.0"
+
+provider:
+  name: aws
+  runtime: nodejs4.3
+
+package:
+  artifact: .build/lambda/lambda.zip
+
+functions:
+  alexaSkill:
+    handler: index.handler
+    events:
+      - alexaSkill
