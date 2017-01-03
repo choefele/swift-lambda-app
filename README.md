@@ -72,7 +72,7 @@ Tools: [Serverless](https://serverless.com)
 
 This project contains a `serverless.yml` configuration file for the [Serverless Framework](https://serverless.com), which automates uploading and configuring the Lambda function:
 
-- Make sure you have your [AWS credentials configured] for Serverless(https://serverless.com/framework/docs/providers/aws/guide/credentials/)
+- Make sure you have your [AWS credentials configured for Serverless](https://serverless.com/framework/docs/providers/aws/guide/credentials/)
 - Run `run-integration-tests.sh` to produce a zip file at `.build/lambda/lambda.zip` with all required files to upload to Lambda
 - Run `sls deploy` to upload and configure the Lambda function
 
