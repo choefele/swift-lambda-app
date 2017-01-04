@@ -1,0 +1,13 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: swift-lambda-app
+Resources:
+  AlexaSkillFunction:
+    Properties:
+      CodeUri: s3://swift-lambda-app-us-east-1/fb9826eb5bc997a1ea9147b665d6097d
+      Events:
+        AlexaSkillEvent:
+          Type: AlexaSkill
+      Handler: index.handler
+      Runtime: nodejs4.3
+    Type: AWS::Serverless::Function
+Transform: AWS::Serverless-2016-10-31
