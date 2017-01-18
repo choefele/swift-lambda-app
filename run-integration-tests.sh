@@ -21,7 +21,7 @@ docker run \
     --volume "$(pwd):/app" \
     --workdir /app \
     smithmicro/swift:$SWIFT_VERSION \
-    /bin/bash -c "ldd .build/native/release/Lambda | grep so | sed -e '/^[^\t]/ d' | sed -e 's/\t//' | sed -e 's/.*=..//' | sed -e 's/ (0.*)//' | xargs -i% cp % .build/lambda/libraries"
+    /bin/bash -c "ldd .build/native/release/Lambda | grep so | sed -e '/^[^\t]/ d' -e 's/\t//' -e 's/.*=..//' -e 's/ (0.*)//' | xargs -i% cp % .build/lambda/libraries"
 
 # Run integration tests
 cp Shim/index.js .build/lambda/
