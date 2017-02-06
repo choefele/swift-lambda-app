@@ -9,7 +9,7 @@ docker run \
     --rm \
     --volume "$(pwd):/app" \
     --workdir /app \
-    smithmicro/swift:$SWIFT_VERSION \
+    swift:$SWIFT_VERSION \
     swift build -c release --build-path .build/native
 mkdir -p .build/lambda
 cp .build/native/release/Lambda .build/lambda/
@@ -20,7 +20,7 @@ docker run \
     --rm \
     --volume "$(pwd):/app" \
     --workdir /app \
-    smithmicro/swift:$SWIFT_VERSION \
+    swift:$SWIFT_VERSION \
     /bin/bash -c "ldd .build/native/release/Lambda | grep so | sed -e '/^[^\t]/ d' -e 's/\t//' -e 's/.*=..//' -e 's/ (0.*)//' | xargs -i% cp % .build/lambda/libraries"
 
 # Run integration tests

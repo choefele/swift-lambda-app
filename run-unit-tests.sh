@@ -9,5 +9,5 @@ docker run \
     --rm \
     --volume "$(pwd):/app" \
     --workdir /app \
-    smithmicro/swift:$SWIFT_VERSION \
+    swift:$SWIFT_VERSION \
     swift test --build-path .build/native
